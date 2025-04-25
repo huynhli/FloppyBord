@@ -285,6 +285,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gravity: -9.8
   strength: 5
+  sprites:
+  - {fileID: 21300000, guid: c014a9bfbfbd09f4e8d76298d237f0ba, type: 3}
+  - {fileID: 21300000, guid: a038a7b12a9f5d14682160f242133bf1, type: 3}
+  - {fileID: 21300000, guid: d982265c08332eb44a14b5fe31c9990e, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
