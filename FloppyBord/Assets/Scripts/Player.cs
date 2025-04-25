@@ -2,16 +2,37 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
+    private SpriteRenderer spriteRenderer;
     private Vector3 direction;
     public float gravity = -9.8f;
     public float strength = 5f;
 
+    public Sprite[] sprites;
+    private int spriteIndex;
+
+    // updates when object is initialized
+    private void Awake() {
+        spriteRenderer = GetComponent<SpriteRenderer>();
+    }
+
+    // updates first frame when object is enabled
+    private void Start() {
+        InvokeRepeating(nameof(AnimateSprite), 0.15f, 0.15f); // calls every 1.5 seconds
+
+    }
+
+    private void AnimateSprite() {
+        spriteIndex++;
+        if (spriteIndex >= sprites.Length) {
+            spriteIndex = 0;
+        }
+        spriteRenderer.sprite = sprites[spriteIndex];
+    }
+
     // updates every frame
     // usually put input
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
-        {
+    private void Update() {
+        if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
             direction = Vector3.up * strength;
         }
 
