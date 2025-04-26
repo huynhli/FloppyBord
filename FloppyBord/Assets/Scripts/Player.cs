@@ -21,6 +21,14 @@ public class Player : MonoBehaviour
 
     }
 
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.gameObject.tag == "Obstacle") {
+            FindObjectOfType<GameManager>().GameOver();   // not super efficient
+        } else if (other.gameObject.tag == "Scoring") {
+            FindObjectOfType<GameManager>().IncreaseScore();
+        }
+    }
+
     private void AnimateSprite() {
         spriteIndex++;
         if (spriteIndex >= sprites.Length) {
