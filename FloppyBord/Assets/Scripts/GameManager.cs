@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Play() {
-        player.ResetPlayer();
+        player.ResetPlayer();           // could use OnEnable func in Player file
         score = 0;
         scoreText.text = score.ToString();
 
