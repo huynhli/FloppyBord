@@ -3,6 +3,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     private SpriteRenderer spriteRenderer;
+    private Rigidbody2D playerRigidBody;
     private Vector3 direction;
     public float gravity = -9.8f;
     public float strength = 5f;
@@ -13,6 +14,7 @@ public class Player : MonoBehaviour
     // updates when object is initialized
     private void Awake() {
         spriteRenderer = GetComponent<SpriteRenderer>();
+        playerRigidBody = GetComponent<Rigidbody2D>();
     }
 
     // updates first frame when object is enabled
@@ -41,12 +43,11 @@ public class Player : MonoBehaviour
     // usually put input
     private void Update() {
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0)) {
-            direction = Vector3.up * strength;
+            playerRigidBody.velocity = Vector2.up * strength;
         }
 
-        
-        direction.y += gravity * Time.deltaTime;
-        transform.position += direction * Time.deltaTime;
+        // direction.y += gravity * Time.deltaTime;
+        // transform.position += direction * Time.deltaTime;
 
         // touch input
         // if (Input.touchCount > 0)
@@ -58,4 +59,9 @@ public class Player : MonoBehaviour
         // }
         // 
     } 
+
+    public void ResetPlayer() {
+        transform.position = new Vector3(0, 0, 0);
+        playerRigidBody.velocity = Vector2.zero;        // Reset velocity to 0
+    }
 }

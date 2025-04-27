@@ -20,8 +20,7 @@ public class GameManager : MonoBehaviour {
     }
 
     public void Play() {
-        
-        player.transform.position = new Vector3(0, 0, 0);
+        player.ResetPlayer();
         score = 0;
         scoreText.text = score.ToString();
 
